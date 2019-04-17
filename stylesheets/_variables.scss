@@ -1,0 +1,51 @@
+$purple: #8A82CC;
+$orange: #FFA782;
+$yellow: #F5D005;
+$blue:   #559AC8;
+
+.bg-cover{
+  background-size: cover;
+  background-position: center center;
+}
+
+.d-flex{
+  display: flex;
+}
+
+//顏色
+.purple{
+  color: $purple;
+}
+
+.orange{
+  color: $orange;
+}
+
+.yellow{
+  color: $yellow;
+}
+
+.blue{
+  color: $blue;
+}
+
+.white{
+  color: #fff;
+}
+
+//背景色
+.bg-purple{
+  background-color: $purple;
+}
+
+.bg-orange{
+  background-color: $orange;
+}
+
+.bg-yellow{
+  background-color: $yellow;
+}
+
+.bg-blue{
+  background-color: $blue;
+}
