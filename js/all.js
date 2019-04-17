@@ -2654,39 +2654,50 @@ function kaoZone(e) {
   pageLength.splice(0, 1); //先清空
   pageLength.push(li.length); //再新增數值
 
+
+  //分頁
+  var curNum = 6; //景點顯示數量
+  var len = Math.ceil(pageLength[0] / curNum); //幾個分頁
+
+  pageData.splice(0, ); //避免無限迴圈疊加
+
   //首次顯示
   for (var i = 0; i < pageLength[0]; i++) {
     funList.children[i].style.display = 'none';
     pageData.push(funList.children[i]);
   };
+
   for (var i = 0; i < 6; i++) {
     pageData.slice(0, curNum)[i].style.display = 'block'; //slice(start,end) 提取 , splice(start, 幾個) 刪除
   };
-
-  //分頁
-  var curNum = 6; //景點顯示數量
-  var len = Math.ceil(pageLength[0] / curNum); //幾個分頁
 
   //頁數顯示
   // i = 1 || i = 0 (i+1)
   function pageView() {
 
     var pageNavList = '';
+    var pageNav = document.getElementById('pageNav');
 
-    for (var i = 1; i < len + 1; i++) {
-      pageNavList += '<li id="pageItem"><a onclick="changePage(' + (i - 1) + ')" id="pageLink" href="#">' + i + '</a></li>';
-      var pageNav = document.getElementById('pageNav');
+    //若分頁數小於2則隱藏頁數
+    if (len > 1) {
+
+      pageNav.style.display = "flex";
+
+      for (var i = 1; i < len + 1; i++) {
+        pageNavList += '<li id="pageItem"><a onclick="changePage(' + (i - 1) + ')" id="pageLink" href="#">' + i + '</a></li>';
+        var pageNav = document.getElementById('pageNav');
+      };
+      pageNav.innerHTML = pageNavList;
+    } else {
+      pageNav.style.display = "none";
     };
-
-    pageNav.innerHTML = pageNavList;
-
   };
   pageView();
 };
 
 //更換分頁
 function changePage(pageNum) {
-  
+
   var startFrom = pageNum * 6;
   var endOn = startFrom + 6;
 
